@@ -8,11 +8,13 @@ const loadPhone = async (searchText) => {
 
 
 const displayPhone = phones => {
-  // console.log(phones)
+  console.log(phones)
 
 const phoneContainer = document.getElementById('phone-container')
 // clear phone container cards before adding new cards
 phoneContainer.textContent = '';
+
+console.log(phones.length)
 
   phones.forEach(phone => {
     console.log(phone);
@@ -44,7 +46,11 @@ console.log(searchText)
 loadPhone(searchText)
 }
 
-
+const handleSearch2 =() =>{
+  const searchField = document.getElementById('search-field2')
+  const searchText = searchField.value
+loadPhone(searchText)
+}
 
 
 // loadPhone()
