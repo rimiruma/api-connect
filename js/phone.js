@@ -2,7 +2,7 @@ const loadPhone = async (searchText='13', isShowAll) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
   const data = await res.json();
   const phones = data.data;
-  console.log(phones);
+  // console.log(phones);
   displayPhone(phones, isShowAll);
 }
 
@@ -22,7 +22,7 @@ if(phones.length > 12 && ! isShowAll){
 else{
   showAllContainer.classList.add('hidden')
 }
-console.log('is show all', isShowAll)
+// console.log('is show all', isShowAll)
 // display only first 12 phones if not show All
 if(!isShowAll){
   phones = phones.slice(0,12);
@@ -54,17 +54,22 @@ if(!isShowAll){
 
 //
 const handleShowDetail = async(id) =>{
-  console.log('clicked show details', id)
+  // console.log('clicked show details', id)
   // load single phone data
-  const res = await fetch(`https://openapi.programming-hero.com/api/phone${id}`);
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
   const data = await res.json();
-  console.log(data);
+  const phone = data.data;
+  // console.log("phone name", phone)
 
-  showPhoneDetails(data);
+  showPhoneDetails(phone);
 
 }
 
 const showPhoneDetails = (phone) =>{
+// console.log(phone);
+const phoneName = document.getElementById('show-detail-phone-name')
+phoneName.innerText = phone.name;
+
 
   // show the modal
   show_details_modal.showModal()
