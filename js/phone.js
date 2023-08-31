@@ -2,7 +2,7 @@ const loadPhone = async (searchText, isShowAll) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
   const data = await res.json();
   const phones = data.data;
-  // console.log(phones);
+  console.log(phones);
   displayPhone(phones, isShowAll);
 }
 
@@ -39,8 +39,8 @@ if(!isShowAll){
             <div class="card-body">
               <h2 class="card-title">${phone.phone_name}</h2>
               <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div class="card-actions justify-end">
-                <button class="btn btn-primary">Buy Now</button>
+              <div class="card-actions justify-center">
+                <button onclick="handleShowDetail('${phone.slug}')" class="btn btn-primary">Show Details</button>
               </div>
             </div>
     `;
@@ -52,12 +52,19 @@ if(!isShowAll){
   toggleLoadingSpinner(false);
 }
 
+//
+const handleShowDetail = async(id) =>{
+  console.log('clicked show details', id)
+  // load single phone data
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone${id}`);
+}
+
 // handle search button
 const handleSearch = (isShowAll) =>{
   toggleLoadingSpinner(true);
   const searchField = document.getElementById('search-field');
   const searchText = searchField.value
-console.log(searchText)
+// console.log(searchText)
 loadPhone(searchText, isShowAll)
 }
 // handle search recap 
