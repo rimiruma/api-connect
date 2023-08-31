@@ -70,6 +70,13 @@ const showPhoneDetails = (phone) =>{
 const phoneName = document.getElementById('show-detail-phone-name')
 phoneName.innerText = phone.name;
 
+const showDetailContainer = document.getElementById('show-detail-container')
+
+showDetailContainer.innerHTML =`
+<img src="${phone.image}" alt=""> </img>
+<p><span>Storage:</span>${phone?.mainFeatures?.storage}</p>
+<p><span>GPS:</span>${phone?.others?.GPS}</p>
+`
 
   // show the modal
   show_details_modal.showModal()
